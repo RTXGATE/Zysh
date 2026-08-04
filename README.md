@@ -1,11 +1,11 @@
 # 🚀 Zysh
 
-![Version](https://img.shields.io/badge/version-1.0.0--alpha-blue)
+![Version](https://img.shields.io/badge/version-1.2.0--alpha-orange)
 ![License](https://img.shields.io/badge/license-MPL%202.0-green)
 ![C++](https://img.shields.io/badge/C++-20-blue)
 
 > A modern Unix shell written in C++  
-> *Status: Alpha (v1.0.0-alpha)*
+> *Status: Alpha (v1.2.0-alpha)*
 
 ---
 
@@ -16,6 +16,33 @@ The main goal is to create a modular, maintainable, and extensible shell that st
 
 > ⚠️ This project is in early development — use with caution!
 
+---
+## 🆕 New Features (v1.2.0-alpha)
+
+Here are the latest additions to Zysh:
+
+- 🏠 **Built-in Commands** – Zysh now supports internal commands:
+  - `exit` – Exit the shell
+  - `cd` – Change directory
+  - `export` – Set environment variables (viewable with `printenv`)
+  - `unset` – Remove environment variables
+- 💬 **Simple Prompt** – Clean and minimal command prompt for better user experience
+
+**Example Usage**
+
+```bash
+Zysh> export MYVAR="hello"
+Zysh> printenv MYVAR
+hello
+Zysh> unset MYVAR
+Zysh> printenv MYVAR
+(no output)
+Zysh> cd /tmp
+Zysh> pwd
+/tmp
+Zysh> exit
+Exiting Zysh shell![returned 0]
+```
 ---
 
 ## 🎯 Goals
@@ -39,13 +66,14 @@ The main goal is to create a modular, maintainable, and extensible shell that st
 - 🧱 CMake-based build system  
 - ▶️ **Executor**
 - 🧩 Modular architecture for easy extension
+- 🏠 **Built-in commands**
 
 ---
 
 ## 🔮 Planned Features
 
 - [x] Command execution engine  
-- [ ] Built-in commands 
+- [x] Built-in commands 
 - [ ] Pipes (|)  
 - [ ] I/O redirection (>, <, >>)  
 - [ ] Environment variable support  
@@ -66,7 +94,7 @@ cmake -B build
 cmake --build build
 
 # Run (after build)
-./build/Zysh
+./build/Zysh_1_2_0_alpha
 ```
 ---
 
@@ -75,11 +103,11 @@ cmake --build build
 After building, run Zysh and try some commands:
 
 ```bash
-./build/Zysh
-$ ls -la
-$ echo "Hello from Zysh!"
-$ pwd
-$ whoami
+./build/Zysh_1_2_0_alpha 
+Zysh> ls -la
+Zysh> echo "Hello from Zysh!"
+Zysh> pwd
+Zysh> whoami
 ```
 
 ---
