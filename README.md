@@ -1,11 +1,11 @@
 # 🚀 Zysh
 
-![Version](https://img.shields.io/badge/version-1.3.0--alpha-orange)
+![Version](https://img.shields.io/badge/version-1.4.0--alpha-orange)
 ![License](https://img.shields.io/badge/license-MPL%202.0-green)
 ![C++](https://img.shields.io/badge/C++-20-blue)
 
 > A modern Unix shell written in C++  
-> *Status: Alpha (1.3.0-alpha)*
+> *Status: Alpha (1.4.0-alpha)*
 
 ---
 
@@ -17,32 +17,45 @@ The main goal is to create a modular, maintainable, and extensible shell that st
 > ⚠️ This project is in early development — use with caution!
 
 ---
-## 🆕 New Features (v1.3.0-alpha)
+## 🆕 New Features (v1.4.0-alpha)
 
 Here are the latest additions to Zysh:
 
- - 🌀 **Pipe Support (`|`)** – Zysh now supports piping between commands. Chain multiple commands together where the output of one becomes the input of the next.
-- ⚡ **Efficient Data Flow** – Built on Unix-style pipe semantics with proper process synchronization.
+ - 📂 **I/O Redirection** – Zysh now supports full input/output redirection:
+  - `<`  – Redirect input from a file
+  - `>`  – Redirect output to a file (overwrite)
+  - `>>` – Redirect output to a file (append)
+  - `2>` – Redirect standard error (overwrite)
+  - `2>>` – Redirect standard error (append)
+  - `1>&2` – Redirect standard output to standard error
+- 🧹 **Cleaner Codebase** – Removed assembly files for better portability and maintainability across different architectures.
 
 **Example Usage:**
 
 ```bash
-Zysh> ls -la | grep ".md"
--rw-r--r-- 1 user user 1243 Aug 7 10:00 README.md
--rw-r--r-- 1 user user 2345 Aug 7 09:00 CONTRIBUTING.md
+# Redirect output to file
+Zysh> echo Hello > output.txt
+Zysh> cat output.txt
+Hello
 
-Zysh> echo "Hello World" | wc -c
-12
+# Append output to file
+Zysh> echo Another line >> output.txt
+Zysh> cat output.txt
+Hello
+Another line
 
-Zysh> ps aux | grep zysh | wc -l
-3
+# Redirect input from file
+Zysh> cat < input.txt
+Content of input.txt
 
-Zysh> ls | sort | head -5
-CMakeLists.txt
-LICENSE
-README.md
-build/
-src/
+# Redirect errors
+Zysh> ls /nonexistent 2> error.log
+Zysh> cat error.log
+ls: cannot access '/nonexistent': No such file or directory
+
+# Redirect stdout to stderr
+Zysh> echo Error message 1>&2
+Error message
 ```
 ---
 
@@ -62,14 +75,14 @@ src/
 
 ## ✅ Current Features
 
-- ⚙️ Lexer & Token system  
-- 📦 Parser 
-- 🧱 CMake-based build system  
+- ⚙️ **Lexer & Token system**  
+- 📦 **Parser** 
+- 🧱 **CMake-based build system**  
 - ▶️ **Executor**
-- 🧩 Modular architecture for easy extension
+- 🧩 **Modular architecture for easy extension**
 - 🏠 **Built-in commands**
 - 🌀 **Pipe and chaining commands**
-
+- 📂 **I/O Redirection**
 ---
 
 ## 🔮 Planned Features
@@ -77,7 +90,7 @@ src/
 - [x] Command execution engine  
 - [x] Built-in commands 
 - [x] Pipes (|)  
-- [ ] I/O redirection (>, <, >>)  
+- [x] I/O redirection (>, <, >>)  
 - [ ] Environment variable support  
 - [ ] Command history  
 - [ ] Syntax highlight
@@ -105,7 +118,7 @@ cmake --build build
 After building, run Zysh and try some commands:
 
 ```bash
-./build/Zysh_1_3_0_alpha 
+./build/Zysh_1_4_0_alpha 
 Zysh> ls -la
 Zysh> echo "Hello from Zysh!"
 Zysh> pwd
