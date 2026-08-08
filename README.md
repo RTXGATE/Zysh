@@ -1,11 +1,11 @@
 # 🚀 Zysh
 
-![Version](https://img.shields.io/badge/version-1.4.0--alpha-orange)
+![Version](https://img.shields.io/badge/version-1.5.0--alpha-orange)
 ![License](https://img.shields.io/badge/license-MPL%202.0-green)
 ![C++](https://img.shields.io/badge/C++-20-blue)
 
 > A modern Unix shell written in C++  
-> *Status: Alpha (1.4.0-alpha)*
+> *Status: Alpha (1.5.0-alpha)*
 
 ---
 
@@ -17,46 +17,50 @@ The main goal is to create a modular, maintainable, and extensible shell that st
 > ⚠️ This project is in early development — use with caution!
 
 ---
-## 🆕 New Features (v1.4.0-alpha)
+
+## 🆕 New Features (v1.5.0-alpha)
 
 Here are the latest additions to Zysh:
 
- - 📂 **I/O Redirection** – Zysh now supports full input/output redirection:
-  - `<`  – Redirect input from a file
-  - `>`  – Redirect output to a file (overwrite)
-  - `>>` – Redirect output to a file (append)
-  - `2>` – Redirect standard error (overwrite)
-  - `2>>` – Redirect standard error (append)
-  - `1>&2` – Redirect standard output to standard error
-- 🧹 **Cleaner Codebase** – Removed assembly files for better portability and maintainability across different architectures.
+- 🔤 **Quote Support** – Zysh now handles single and double quotes:
+  
+  - Single quotes preserve the literal value of characters inside them.
+  - Double quotes allow spaces and support escape sequences.
+
+- ⚡ **Escape Character Support** – Backslash ("\") can be used to escape characters:
+  - `"\\"` – Literal backslash
+  - `"\""` – Literal double quote
+  - `"\ "` – Literal space
+  - Other escaped characters are preserved according to the current quoting context.
+
+- 🔄 **Input Continuation** – Zysh supports multi-line input for incomplete commands, using a continuation prompt:
+  - `"dquote>"` – Unterminated double quote
+  - `"quote>"` – Unterminated single quote
+  - `"escape>"` – Trailing escape character
 
 **Example Usage:**
 
 ```bash
-# Redirect output to file
-Zysh> echo Hello > output.txt
-Zysh> cat output.txt
-Hello
+# Single quotes
+Zysh> echo 'Hello $USER'
+Hello $USER
 
-# Append output to file
-Zysh> echo Another line >> output.txt
-Zysh> cat output.txt
-Hello
-Another line
+# Double quotes
+Zysh> echo "Hello world"
+Hello world
 
-# Redirect input from file
-Zysh> cat < input.txt
-Content of input.txt
+# Escaped spaces
+Zysh> echo hello\ world
+hello world
 
-# Redirect errors
-Zysh> ls /nonexistent 2> error.log
-Zysh> cat error.log
-ls: cannot access '/nonexistent': No such file or directory
-
-# Redirect stdout to stderr
-Zysh> echo Error message 1>&2
-Error message
-```
+# Input continuation
+Zysh> echo "This is a very long
+dquote> command that spans
+dquote> multiple lines"
+This is a very long
+command that spans
+multiple lines
+ ```
 ---
 
 ## 🎯 Goals
@@ -109,7 +113,7 @@ cmake -B build
 cmake --build build
 
 # Run (after build)
-./build/Zysh_1_3_0_alpha
+./build/Zysh_1_5_0_alpha
 ```
 ---
 
@@ -118,7 +122,7 @@ cmake --build build
 After building, run Zysh and try some commands:
 
 ```bash
-./build/Zysh_1_4_0_alpha 
+./build/Zysh_1_5_0_alpha 
 Zysh> ls -la
 Zysh> echo "Hello from Zysh!"
 Zysh> pwd
