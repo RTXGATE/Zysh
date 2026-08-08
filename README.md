@@ -87,6 +87,7 @@ multiple lines
 - 🏠 **Built-in commands**
 - 🌀 **Pipe and chaining commands**
 - 📂 **I/O Redirection**
+- 🔤 **Quote support**
 ---
 
 ## 🔮 Planned Features
