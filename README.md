@@ -1,6 +1,6 @@
 # 🚀 Zysh
 
-![Version](https://img.shields.io/badge/version-1_6_0-alpha-orange)
+![Version](https://img.shields.io/badge/version-1.6.0--alpha-orange)
 ![License](https://img.shields.io/badge/license-MPL%202.0-green)
 ![C++](https://img.shields.io/badge/C++-20-blue)
 
