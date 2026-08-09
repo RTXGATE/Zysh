@@ -1,5 +1,0 @@
-command.hpp
-Parser.cpp
-Parser.hpp
-Redirection.hpp
-test.txt
