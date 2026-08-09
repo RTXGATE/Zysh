@@ -1,11 +1,11 @@
 # 🚀 Zysh
 
-![Version](https://img.shields.io/badge/version-1.5.0--alpha-orange)
+![Version](https://img.shields.io/badge/version-1.6.0-alpha-orange)
 ![License](https://img.shields.io/badge/license-MPL%202.0-green)
 ![C++](https://img.shields.io/badge/C++-20-blue)
 
 > A modern Unix shell written in C++  
-> *Status: Alpha (1.5.0-alpha)*
+> *Status: Alpha (1.6.0-alpha)*
 
 ---
 
@@ -18,49 +18,49 @@ The main goal is to create a modular, maintainable, and extensible shell that st
 
 ---
 
-## 🆕 New Features (v1.5.0-alpha)
+## 🆕 New Features (v1.6.0-alpha)
 
 Here are the latest additions to Zysh:
 
-- 🔤 **Quote Support** – Zysh now handles single and double quotes:
-  
-  - Single quotes preserve the literal value of characters inside them.
-  - Double quotes allow spaces and support escape sequences.
-
-- ⚡ **Escape Character Support** – Backslash ("\") can be used to escape characters:
-  - `"\\"` – Literal backslash
-  - `"\""` – Literal double quote
-  - `"\ "` – Literal space
-  - Other escaped characters are preserved according to the current quoting context.
-
-- 🔄 **Input Continuation** – Zysh supports multi-line input for incomplete commands, using a continuation prompt:
-  - `"dquote>"` – Unterminated double quote
-  - `"quote>"` – Unterminated single quote
-  - `"escape>"` – Trailing escape character
+- 🔤 **Advanced Word Parsing** – Zysh now handles quoted and unquoted word segments with proper context preservation during lexing:
+  - Single-quoted strings (`'...'`) – Preserve literal value of every character
+  - Double-quoted strings (`"..."`) – Allow escape sequences and variable expansion
+  - Quote context tracking – Each word segment retains its quote information during parsing
+- ⚡ **Escape Sequences** – Full support for common escape sequences inside and outside quotes:
+  - `\a` – Alert / Bell ( on work )
+  - `\b` – Backspace
+  - `\f` – Form feed
+  - `\n` – Newline
+  - `\r` – Carriage return
+  - `\t` – Horizontal tab
+  - `\v` – Vertical tab
+  - `\\` – Backslash
+  - `\'` – Single quote
+  - `\"` – Double quote
 
 **Example Usage:**
 
 ```bash
-# Single quotes
-Zysh> echo 'Hello $USER'
-Hello $USER
+# Newline and tab escapes
+Zysh> echo "hello\nworld"
+hello
+world
 
-# Double quotes
-Zysh> echo "Hello world"
-Hello world
+Zysh> echo "hello\tworld"
+hello   world
 
-# Escaped spaces
-Zysh> echo hello\ world
-hello world
+# Multiple escapes combined
+Zysh> echo "Line1\nLine2\tTabbed"
+Line1
+Line2    Tabbed
 
-# Input continuation
-Zysh> echo "This is a very long
-dquote> command that spans
-dquote> multiple lines"
-This is a very long
-command that spans
-multiple lines
- ```
+# Quote characters inside strings
+Zysh> echo "She said \"Hello!\""
+She said "Hello!"
+
+Zysh> echo 'It\'s a beautiful day'
+It's a beautiful day
+```
 ---
 
 ## 🎯 Goals
@@ -114,7 +114,7 @@ cmake -B build
 cmake --build build
 
 # Run (after build)
-./build/Zysh_1_5_0_alpha
+./build/Zysh_1_6_0_alpha
 ```
 ---
 
@@ -123,7 +123,7 @@ cmake --build build
 After building, run Zysh and try some commands:
 
 ```bash
-./build/Zysh_1_5_0_alpha 
+./build/Zysh_1_6_0_alpha 
 Zysh> ls -la
 Zysh> echo "Hello from Zysh!"
 Zysh> pwd
