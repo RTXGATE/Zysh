@@ -1,11 +1,11 @@
 # 🚀 Zysh
 
-![Version](https://img.shields.io/badge/version-1.6.0-alpha-orange)
+![Version](https://img.shields.io/badge/version-1_6_0-alpha-orange)
 ![License](https://img.shields.io/badge/license-MPL%202.0-green)
 ![C++](https://img.shields.io/badge/C++-20-blue)
 
 > A modern Unix shell written in C++  
-> *Status: Alpha (1.6.0-alpha)*
+> *Status: Alpha (1_6_0-alpha)*
 
 ---
 
@@ -18,7 +18,7 @@ The main goal is to create a modular, maintainable, and extensible shell that st
 
 ---
 
-## 🆕 New Features (v1.6.0-alpha)
+## 🆕 New Features (v1_6_0-alpha)
 
 Here are the latest additions to Zysh:
 
